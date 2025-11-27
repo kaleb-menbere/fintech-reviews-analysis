@@ -1,104 +1,186 @@
-Fintech Reviews Analysis
+💡 Fintech Customer Experience Analysis
 
-A comprehensive analysis of Google Play Store reviews for Ethiopian banking apps to derive customer satisfaction insights and actionable recommendations.
+A comprehensive analysis of Google Play Store reviews for Ethiopian banking apps to derive customer satisfaction insights and actionable recommendations for Omega Consultancy.
 
-🏦 Banks Analyzed
+🏦 Banks Under Scrutiny
+
+Bank
+
+App Name
+
+Status
 
 Commercial Bank of Ethiopia (CBE)
 
+CBE Mobile Banking
+
+📈 High Volume
+
 Bank of Abyssinia (BOA)
+
+Bank of Abyssinia Mobile
+
+⏳ Medium Volume
 
 Dashen Bank
 
-📁 Project Structure
+Dashen Mobile Banking
 
-fintech-reviews-analysis/
-├── data/               # Data storage
-│   ├── raw/           # Raw scraped data
-│   └── processed/     # Cleaned and processed data
-├── src/               # Source code
-│   ├── data_collection/scrape_reviews.py    # Web scraping scripts
-│   ├── data_processing/preprocess_data.py    # Data cleaning and preprocessing
-│   ├── analysis/           # NLP and sentiment analysis
-│   └── database/           # Database operations
-├── notebooks/          # Jupyter notebooks
-│   ├── exploration/   # Data exploration
-│   └── analysis/      # Analysis notebooks
-├── docs/              # Documentation and reports
-│   ├── reports/       # Generated reports
-│   └── assets/        # Images and assets
-├── tests/             # Unit tests
-├── config/            # Configuration files
-└── scripts/           # Utility scripts
+📊 Lower Volume
+
+🚀 Quick Start & Project Status
+
+Build Status (Mockup)
+
+To reflect the dynamic nature of a project, the build status uses badge placeholders:
 
 
-🚀 Quick Start
+
 
 Installation
 
+# Clone the repository
+git clone [YOUR_REPO_URL]
+cd fintech-reviews-analysis
+
+# Install dependencies (pandas, transformers, scikit-learn, psycopg2, etc.)
 pip install -r requirements.txt
 
 
-Running the Pipeline
+Running the Analysis Pipeline
 
-Data Collection: python src/data_collection/scrape_reviews.py
+To execute the full pipeline, run the scripts in sequence from the project root:
 
-Data Processing: python src/data_processing/clean_reviews.py
+Step
 
-Analysis: python src/analysis/sentiment_analysis.py
+Script Path
 
-📊 Methodology
+Output Files
 
-Data Collection: Automated scraping of Google Play Store reviews
+Task 1: Data Collection
 
-Data Cleaning: Handling missing values, duplicates, and normalization
+src/data_collection/scrape_reviews.py
 
-Sentiment Analysis: Using transformer models for sentiment classification
+data/raw/reviews_initial_clean.csv
 
-Thematic Analysis: Keyword extraction and topic modeling
+Task 1: Preprocessing
 
-Database Storage: PostgreSQL for persistent data storage
+src/data_processing/preprocess_data.py
 
-Visualization: Interactive plots and dashboards
+data/processed/final_bank_reviews_constrained.csv
 
-🎯 Business Objectives
+Task 2: NLP Analysis
 
-Identify customer satisfaction drivers and pain points
+src/analysis/nlp_pipeline.py
 
-Compare performance across different banking apps
+data/processed/reviews_with_sentiment_themes.csv
 
-Provide data-driven recommendations for app improvement
+Task 3: DB Load
 
-Support feature development and customer retention strategies
+src/database/db_load_data.py
 
-Task 2: Sentiment and Thematic Analysis Methodology
+PostgreSQL (bank_reviews DB)
 
-This task focused on quantifying user sentiment and grouping feedback into actionable themes using Natural Language Processing (NLP) techniques.
+🎯 Business Objectives (Actionable Focus)
+
+✅ Identify customer satisfaction drivers and pain points using data-backed evidence.
+
+✅ Compare performance across different banking apps based on balanced sentiment scores.
+
+✅ Provide data-driven, actionable recommendations for app improvement.
+
+✅ Support feature development and customer retention strategies.
+
+🔬 Analysis Methodology
+
+Task 1: Data Collection & Preprocessing (Completed)
+
+Successfully scraped and cleaned customer reviews for CBE, BOA, and Dashen Bank.
+
+Key achievements:
+
+Collected over 9,800 raw reviews using the google-play-scraper library.
+
+Processed data to create a balanced dataset of 2,100 reviews (700 per bank) to mitigate class imbalance bias for fair comparative analysis.
+
+Handled missing values, removed duplicates, and normalized the date format (YYYY-MM-DD).
+
+Saved the clean, balanced dataset to data/processed/final_bank_reviews_constrained.csv.
+
+Task 2: Sentiment and Thematic Analysis
+
+This phase applies advanced NLP techniques to quantify feedback and group complaints into actionable themes.
 
 Sentiment Analysis
 
 Model: distilbert-base-uncased-finetuned-sst-2-english (Hugging Face Transformers).
 
-Process: The model was applied to the cleaned review text, outputting a sentiment_label (positive or negative) and a sentiment_score (confidence). The score was normalized such that a higher score always indicates more positive sentiment.
+Metric: Sentiment scores are aggregated by bank and rating to identify performance trends across the star spectrum (e.g., mean sentiment of 1-star reviews vs. 5-star reviews).
 
-Aggregation: Sentiment scores were aggregated by bank and rating to identify sentiment trends across the star spectrum (e.g., mean sentiment of 1-star reviews vs. 5-star reviews).
+Thematic Analysis (Rule-Based Clustering)
 
-Thematic Analysis
+Thematic analysis uses TF-IDF for keyword extraction followed by a Rule-Based Clustering approach to assign reviews to 5 core themes:
 
-Method: Keyword Extraction (via TF-IDF) followed by Rule-Based Clustering.
+Theme 🏷️
 
-Keyword Extraction: The TF-IDF (Term Frequency-Inverse Document Frequency) method was used to identify the most significant unigrams and bigrams (n-grams) within each bank's review set. This informed the creation of the theme rules.
+Focus Area
 
-Theme Rules (Rule-Based Clustering): To ensure consistency and actionability (meeting the 3-5 theme requirement), a rule-based mapping was implemented. Reviews are assigned one or more of the following themes based on the presence of specific keywords:
+Example Keywords
 
-Account Access Issues: (e.g., login, password, fingerprint)
+Scenario Alignment
 
-Transaction Performance: (e.g., slow, transfer, speed, time)
+Account Access Issues
 
-Reliability & Bugs: (e.g., crash, bug, error, fault)
+Login, verification, password resets.
 
-User Interface & Experience: (e.g., UI, interface, design, easy)
+login, password, fingerprint, access
 
-Customer Support & Service: (e.g., support, customer, call, help)
+Feature Enhancement, Complaint Management
 
-The resulting dataset, reviews_with_sentiment_themes.csv, includes the calculated sentiment and assigned themes for use in Task 3 and Task 4.
+Transaction Performance
+
+Speed, successful transfers, OTP delays.
+
+slow, transfer, speed, delay, transaction
+
+Scenario 1: Retaining Users
+
+Reliability & Bugs
+
+App stability, crashes, update issues.
+
+crash, bug, error, fault, stop, problem
+
+Complaint Management
+
+User Interface & Experience
+
+Navigation, design, ease of use.
+
+ui, interface, design, easy, confusing
+
+Feature Enhancement
+
+Customer Support & Service
+
+Help quality, branch interactions.
+
+support, customer, call, help
+
+Complaint Management
+
+📂 Project Structure
+
+fintech-reviews-analysis/
+├── data/               # Data storage
+│   ├── raw/           # Raw scraped data
+│   └── processed/     # Cleaned and processed data (Input for Task 2/3)
+├── src/               # Source code
+│   ├── data_collection/ # Web scraping scripts
+│   ├── data_processing/ # Data cleaning and preprocessing
+│   ├── analysis/           # NLP and sentiment analysis (Task 2)
+│   └── database/           # Database operations (Task 3)
+├── notebooks/          # Jupyter notebooks
+├── docs/              # Documentation and reports
+├── tests/             # Unit tests
+└── requirements.txt   # Project dependencies
