@@ -1,3 +1,7 @@
+jupyter
 numpy
 pandas
 google-play-scraper
+matplotlib
+seaborn
+tabulate

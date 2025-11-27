@@ -22,3 +22,16 @@
 2025-11-26 15:17:03,764 - INFO - Initial raw reviews count: 10051
 2025-11-26 15:17:04,011 - INFO - Cleaned reviews count: 9884 (Dropped 167 rows).
 2025-11-26 15:17:04,081 - INFO - 💾 Saved 9884 cleaned reviews to C:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\raw\bank_reviews_clean_20251126_151704.csv
+2025-11-27 09:11:01,823 - INFO - 🚀 Starting review scraping for all banks...
+2025-11-27 09:11:01,824 - INFO - ============================================================
+2025-11-27 09:11:01,825 - INFO - 📱 Starting to scrape reviews for Commercial Bank of Ethiopia (CBE) (Max 500 reviews)...
+2025-11-27 09:11:08,596 - INFO - ✅ Successfully scraped 8112 reviews for CBE
+2025-11-27 09:11:10,604 - INFO - 📱 Starting to scrape reviews for Bank of Abyssinia (BOA)...
+2025-11-27 09:11:12,048 - INFO - ✅ Successfully scraped 1181 reviews for BOA
+2025-11-27 09:11:14,054 - INFO - 📱 Starting to scrape reviews for Dashen Bank (Super App) (Dashen)...
+2025-11-27 09:11:15,375 - INFO - ✅ Successfully scraped 762 reviews for Dashen
+2025-11-27 09:11:17,388 - INFO - 🎯 Total raw reviews collected: 10055
+2025-11-27 09:11:17,431 - INFO - Initial raw reviews count: 10055
+2025-11-27 09:11:17,545 - INFO - Cleaned reviews count: 9888 (Dropped 167 rows).
+2025-11-27 09:11:17,548 - INFO - The 'date' column was successfully excluded from the saved CSV file.
+2025-11-27 09:11:17,606 - INFO - 💾 Saved 9888 cleaned reviews to C:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\raw\bank_reviews_clean_20251127_091117.csv

@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 
 def preprocess_reviews(reviews: list) -> pd.DataFrame:
     """
-    Performs required preprocessing on the raw review data: 
+    Performs initial required preprocessing on the raw review data: 
     renaming, date normalization, handling missing data, and removing duplicates.
     
     Args:
@@ -82,16 +82,14 @@ def preprocess_reviews(reviews: list) -> pd.DataFrame:
     df.drop_duplicates(subset=['review_text', 'date', 'bank'], inplace=True)
     
     final_count = len(df)
-    logger.info(f"Cleaned reviews count: {final_count} (Dropped {initial_count - final_count} rows).")
+    logger.info(f"Cleaned reviews count: {final_count} (Dropped {initial_count - final_count} rows during initial clean).")
     
     return df
 
 class BankReviewScraper:
     """Scrapes reviews from Google Play Store for banking apps"""
     
-    # 🟢 FIX: Ensure all methods are correctly indented within the class (Fixes AttributeError)
     def __init__(self):
-        # 🟢 FIX: Corrected App IDs to ensure reviews are collected
         self.bank_apps = {
             'CBE': {
                 'id': 'com.combanketh.mobilebanking', 
@@ -111,7 +109,6 @@ class BankReviewScraper:
             }
         }
         self.scraping_config = {
-            # 🟢 FIX: Set lang=None and country='et' to maximize Ethiopian review collection
             'lang': None, 
             'country': 'et', 
             'sleep_milliseconds': 1000,
@@ -170,78 +167,31 @@ class BankReviewScraper:
         logger.info(f"🎯 Total raw reviews collected: {total_reviews}")
         return self.all_reviews
     
-    def save_to_csv(self, df: pd.DataFrame, filename=None):
-        """Save scraped reviews DataFrame to CSV file."""
+    def save_to_csv(self, df: pd.DataFrame, filename="reviews_initial_clean.csv"):
+        """
+        Save scraped reviews DataFrame to CSV file.
+        Saves to a predefined file for the next pipeline step to consume.
+        """
         if df.empty:
             logger.error("❌ No reviews to save!")
             return None
         
-        if filename is None:
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            # Use 'clean' in the filename to indicate it's the post-preprocessing output
-            filename = os.path.join(DATA_RAW_PATH, f"bank_reviews_clean_{timestamp}.csv")
+        # --- ADJUSTED FILE PATH ---
+        filepath = os.path.join(DATA_RAW_PATH, filename)
         
         # Create data/raw directory if it doesn't exist
-        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
         
         # Save to CSV using UTF-8 encoding
-        df.to_csv(filename, index=False, encoding='utf-8')
+        df.to_csv(filepath, index=False, encoding='utf-8')
         
-        logger.info(f"💾 Saved {len(df)} cleaned reviews to {filename}")
-        return filename
+        logger.info(f"💾 Saved {len(df)} initial clean reviews to {filepath}")
+        return filepath
     
-    def generate_report(self, df: pd.DataFrame):
-        """Generate a summary report of the scraping and preprocessing results"""
-        if df.empty:
-            logger.error("❌ No data available for report")
-            return False
-        
-        total_reviews = len(df)
-        
-        print("\n" + "=" * 60)
-        print("📊 SCRAPING REPORT")
-        print("=" * 60)
-        
-        print(f"Total Cleaned Reviews Collected: {total_reviews}")
-        
-        # Reviews per bank
-        print("\n📈 Reviews per Bank:")
-        bank_counts = df['bank'].value_counts()
-        
-        for expected_bank in self.bank_apps.values():
-            short_name = expected_bank['short_name']
-            count = bank_counts.get(short_name, 0)
-            status = "✅" if count >= 400 else "⚠️ "
-            print(f"  {status} {short_name}: {count} reviews")
-        
-        # Date range
-        if 'date' in df.columns:
-            df['date'] = pd.to_datetime(df['date'], errors='coerce')
-            df.dropna(subset=['date'], inplace=True)
-            if not df.empty:
-                print(f"\n📅 Date Range: {df['date'].min().strftime('%Y-%m-%d')} to {df['date'].max().strftime('%Y-%m-%d')}")
-        
-        # Rating distribution
-        if 'rating' in df.columns:
-            print(f"\n⭐ Rating Distribution:")
-            rating_counts = df['rating'].value_counts().sort_index()
-            for rating, count in rating_counts.items():
-                print(f"  {rating} stars: {count} reviews")
-        
-        # Requirements check
-        banks_with_400 = sum(count >= 400 for count in bank_counts.values)
-        requirement_met = total_reviews >= 1200 and banks_with_400 == 3
-        
-        print(f"\n🎯 TASK 1 REQUIREMENTS:")
-        print(f"  Minimum 1200 total reviews: {total_reviews}/1200 {'✅' if total_reviews >= 1200 else '❌'}")
-        print(f"  Minimum 400 reviews per bank: {banks_with_400}/3 {'✅' if banks_with_400 == 3 else '❌'}")
-        print(f"  Overall Status: {'✅ COMPLETED' if requirement_met else '❌ INCOMPLETE'}")
-        
-        return requirement_met
 
 def main():
-    """Main function to run the scraping and preprocessing process"""
-    print("🎯 10 Academy Week 2 Challenge - Task 1: Data Collection")
+    """Main function to run the scraping and initial cleaning process"""
+    print("🎯 10 Academy Week 2 Challenge - Task 1: Data Collection & Initial Clean")
     print("Google Play Store Review Scraper")
     print("=" * 60)
     
@@ -256,28 +206,21 @@ def main():
             logger.error("💥 No reviews were collected. Exiting.")
             return False
         
-        # 2. Preprocess the collected data
+        # 2. Initial Preprocessing (cleaning, deduplication, date format)
         df_cleaned = preprocess_reviews(raw_reviews)
         
         if df_cleaned.empty:
             logger.error("💥 All collected reviews were dropped during preprocessing. Exiting.")
             return False
 
-        # 3. Save to CSV
+        # 3. Save to CSV for the next processing step
         csv_file = scraper.save_to_csv(df_cleaned)
         
-        # 4. Generate report
-        requirement_met = scraper.generate_report(df_cleaned)
+        print("\n✨ Initial collection and cleaning COMPLETED SUCCESSFULLY! 🎉")
+        print(f"📁 Initial data saved to: {csv_file}")
+        print("➡️  Next: Run the data processing script to apply the 400-700 review constraint.")
         
-        if requirement_met:
-            print(f"\n✨ Task 1 Data Collection COMPLETED SUCCESSFULLY! 🎉")
-            print(f"📁 Data saved to: {csv_file}")
-            print("➡️  Next: Start Task 2 - Sentiment and Thematic Analysis")
-        else:
-            print(f"\n⚠️  Task 1 Data Collection INCOMPLETE")
-            print("  Some requirements were not met. Check the log above.")
-        
-        return requirement_met
+        return True
         
     except Exception as e:
         logger.error(f"💥 Critical error during scraping: {str(e)}")
