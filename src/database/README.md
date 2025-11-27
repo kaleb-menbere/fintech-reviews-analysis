@@ -134,3 +134,9 @@ ORDER BY
 
 ---
 ![alt text](image.png)
+
+# Banks Table
+![alt text](image-1.png)
+
+# REviews Table
+![alt text](image-2.png)
