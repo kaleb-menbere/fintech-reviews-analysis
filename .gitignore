@@ -1,10 +1,7 @@
 # Virtual Environment
 venv/
 .env
-
-# Data Output
-data/
-*.csv
+.venv/
 
 # Python
 __pycache__/
