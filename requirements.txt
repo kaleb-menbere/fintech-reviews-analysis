@@ -16,3 +16,6 @@ nltk
 
 
 psycopg2-binary
+
+
+wordcloud

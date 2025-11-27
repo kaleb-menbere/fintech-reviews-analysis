@@ -1,0 +1,50 @@
+--- BANK PERFORMANCE INSIGHTS ---
+
+BANK: BOA
+----------------------------
+TOP DRIVERS:
+           identified_theme  avg_sentiment  count
+ Feature Requests & General       0.096777     52
+           General Feedback       0.081814    485
+User Interface & Experience       0.057713     40
+
+TOP PAIN POINTS:
+           identified_theme  avg_sentiment  count
+           Customer Support      -0.196994     34
+    Transaction Performance      -0.064554     84
+User Interface & Experience       0.057713     40
+
+------------------------------
+
+BANK: CBE
+----------------------------
+TOP DRIVERS:
+           identified_theme  avg_sentiment  count
+ Feature Requests & General       0.401658     60
+User Interface & Experience       0.398649     55
+           General Feedback       0.285536    498
+
+TOP PAIN POINTS:
+       identified_theme  avg_sentiment  count
+       Customer Support       0.034718     22
+Transaction Performance       0.266685     55
+       General Feedback       0.285536    498
+
+------------------------------
+
+BANK: Dashen
+----------------------------
+TOP DRIVERS:
+           identified_theme  avg_sentiment  count
+User Interface & Experience       0.654043     97
+ Feature Requests & General       0.489829     24
+    Transaction Performance       0.391810     72
+
+TOP PAIN POINTS:
+          identified_theme  avg_sentiment  count
+          General Feedback       0.374818    277
+   Transaction Performance       0.391810     72
+Feature Requests & General       0.489829     24
+
+------------------------------
+
