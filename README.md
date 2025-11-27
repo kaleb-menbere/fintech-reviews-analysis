@@ -22,7 +22,7 @@ This project delivers a comprehensive analysis of **Google Play Store reviews** 
 
 ```bash
 # Clone the repository
-git clone [YOUR_REPO_URL]
+git clone https://github.com/kaleb-menbere/fintech-reviews-analysis.git
 cd fintech-reviews-analysis
 
 # Install dependencies
@@ -190,7 +190,5 @@ The rating breakdown table is automatically exported as:
 ```
 data/processed/final_bank_reviews_constrained.csv.csv
 ```
-
-This file can be used for dashboards, reporting, and visual analytics.
 
 
