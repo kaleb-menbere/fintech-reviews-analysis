@@ -7,7 +7,7 @@ seaborn
 tabulate
 langdetect
 
-
+# task 2 dependencies
 transformers
 sklearn
 tqdm
