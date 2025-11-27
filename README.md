@@ -188,7 +188,7 @@ After loading the processed dataset (`final_bank_reviews_constrained.csv`), the 
 The rating breakdown table is automatically exported as:
 
 ```
-bank_rating_breakdown.csv
+data/processed/final_bank_reviews_constrained.csv.csv
 ```
 
 This file can be used for dashboards, reporting, and visual analytics.
