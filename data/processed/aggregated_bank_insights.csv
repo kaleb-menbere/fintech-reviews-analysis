@@ -1,0 +1,16 @@
+bank,rating,total_reviews,Avg_Sentiment_Index (-1 to 1),median_rating,top_theme
+BOA,1,359,-0.35097493036211697,1.0,General Feedback
+BOA,2,39,-0.05128205128205128,2.0,General Feedback
+BOA,3,45,0.2222222222222222,3.0,General Feedback
+BOA,4,29,0.6896551724137931,4.0,General Feedback
+BOA,5,228,0.6754385964912281,5.0,General Feedback
+CBE,1,127,-0.2047244094488189,1.0,General Feedback
+CBE,2,33,-0.030303030303030304,2.0,General Feedback
+CBE,3,58,0.43103448275862066,3.0,General Feedback
+CBE,4,91,0.5054945054945055,4.0,General Feedback
+CBE,5,391,0.7800511508951407,5.0,General Feedback
+Dashen,1,76,-0.18421052631578946,1.0,General Feedback
+Dashen,2,27,-0.07407407407407407,2.0,General Feedback
+Dashen,3,21,0.5238095238095238,3.0,General Feedback
+Dashen,4,22,0.6363636363636364,4.0,General Feedback
+Dashen,5,338,0.8520710059171598,5.0,General Feedback

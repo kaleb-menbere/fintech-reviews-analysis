@@ -6,3 +6,13 @@ matplotlib
 seaborn
 tabulate
 langdetect
+
+
+transformers
+sklearn
+tqdm
+emoji
+nltk
+
+
+psycopg2-binary
