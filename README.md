@@ -16,14 +16,6 @@ This project delivers a comprehensive analysis of **Google Play Store reviews** 
 
 ---
 
-## 📌 **Project Status (Mockup Build Badges)**
-
-> *(Badges shown as placeholders — to be updated once CI/CD is integrated.)*
-> **Build Status:** ![Build Badge](#)
-> **Data Pipeline:** ![Pipeline Badge](#)
-
----
-
 ## ⚡ Quick Start
 
 ### 🔧 **Installation**
@@ -124,3 +116,81 @@ fintech-reviews-analysis/
 ```
 
 ---
+
+
+# 📊 Rating Breakdown Analysis
+
+### ⭐ **Overview**
+
+After loading the processed dataset (`final_bank_reviews_constrained.csv`), the rating distribution across the three banking apps shows clear patterns in customer satisfaction. Each bank has exactly **700 balanced reviews**, ensuring a fair comparison.
+
+---
+
+## 🔢 **Raw Review Counts**
+
+| Bank       | Review Count |
+| ---------- | ------------ |
+| **BOA**    | 700          |
+| **CBE**    | 700          |
+| **Dashen** | 700          |
+
+---
+
+## ⭐ **Bank-Specific Rating Distribution (1–5 Stars)**
+
+### **Bank of Abyssinia (BOA)**
+
+**Highly polarized review profile** — customers either love it or hate it.
+
+| Rating    | Count   |
+| --------- | ------- |
+| ⭐ 1       | 282     |
+| ⭐ 2       | 39      |
+| ⭐ 3       | 43      |
+| ⭐ 4       | 29      |
+| ⭐ 5       | 307     |
+| **Total** | **700** |
+
+---
+
+### **Commercial Bank of Ethiopia (CBE)**
+
+**Generally positive sentiment**, with a strong cluster of 5-star reviews.
+
+| Rating    | Count   |
+| --------- | ------- |
+| ⭐ 1       | 120     |
+| ⭐ 2       | 24      |
+| ⭐ 3       | 35      |
+| ⭐ 4       | 70      |
+| ⭐ 5       | 451     |
+| **Total** | **700** |
+
+---
+
+### **Dashen Bank**
+
+**Best-performing rating distribution** — very high percentage of 5-star reviews.
+
+| Rating    | Count   |
+| --------- | ------- |
+| ⭐ 1       | 94      |
+| ⭐ 2       | 30      |
+| ⭐ 3       | 28      |
+| ⭐ 4       | 37      |
+| ⭐ 5       | 511     |
+| **Total** | **700** |
+
+---
+
+## 📁 Output File
+
+The rating breakdown table is automatically exported as:
+
+```
+bank_rating_breakdown.csv
+```
+
+This file can be used for dashboards, reporting, and visual analytics.
+
+
