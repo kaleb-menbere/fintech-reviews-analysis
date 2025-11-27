@@ -13,3 +13,6 @@ sklearn
 tqdm
 emoji
 nltk
+
+
+psycopg2-binary
