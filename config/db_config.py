@@ -9,10 +9,10 @@ DB_CONFIG = {
     
     # !!! MANDATORY: Replace with your actual PostgreSQL username (often 'postgres' by default) !!!
     "user": "postgres",       
-    
+
     # !!! MANDATORY: Replace with your actual PostgreSQL password !!!
     "password": "2424", 
     
-    # Default PostgreSQL port. Do not change unless you customized it.
+    # Default PostgreSQL port. Do not change unless you customized it. can also be edited
     "port": "5432"
 }
