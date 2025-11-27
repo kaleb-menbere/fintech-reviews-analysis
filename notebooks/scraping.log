@@ -65,3 +65,30 @@
 2025-11-27 09:48:34,444 - INFO - Bank CBE: 7955 reviews found. Sampling down to 700 reviews.
 2025-11-27 09:48:34,450 - INFO - Bank Dashen: 760 reviews found. Sampling down to 700 reviews.
 2025-11-27 09:48:34,510 - INFO - 💾 Saved 2100 final constrained reviews to c:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\processed\final_bank_reviews_constrained.csv
+2025-11-27 10:14:12,268 - INFO - 🚀 Starting review scraping for all banks...
+2025-11-27 10:14:12,271 - INFO - ============================================================
+2025-11-27 10:14:12,273 - INFO - 📱 Starting to scrape reviews for Commercial Bank of Ethiopia (CBE)...
+2025-11-27 10:14:22,000 - INFO - ✅ Successfully scraped 8112 reviews for CBE
+2025-11-27 10:14:24,017 - INFO - 📱 Starting to scrape reviews for Bank of Abyssinia (BOA)...
+2025-11-27 10:14:25,798 - INFO - ✅ Successfully scraped 1181 reviews for BOA
+2025-11-27 10:14:27,803 - INFO - 📱 Starting to scrape reviews for Dashen Bank (Super App) (Dashen)...
+2025-11-27 10:14:29,322 - INFO - ✅ Successfully scraped 762 reviews for Dashen
+2025-11-27 10:14:31,333 - INFO - 🎯 Total raw reviews collected: 10055
+2025-11-27 10:14:31,517 - INFO - Initial raw reviews count: 10055
+2025-11-27 10:14:31,843 - INFO - Cleaned reviews count: 9888 (Dropped 167 rows during initial clean).
+2025-11-27 10:14:31,990 - INFO - 💾 Saved 9888 initial clean reviews to c:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\raw\reviews_initial_clean.csv
+2025-11-27 10:16:18,624 - INFO - Successfully loaded 9888 reviews from c:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\raw\reviews_initial_clean.csv
+2025-11-27 10:16:18,628 - INFO - Starting initial cleaning: duplicates, missing values, and date normalization.
+2025-11-27 10:18:44,458 - INFO - Successfully loaded 9888 reviews from c:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\raw\reviews_initial_clean.csv
+2025-11-27 10:18:44,461 - INFO - Starting initial cleaning: duplicates, missing values, and date normalization.
+2025-11-27 10:18:44,466 - INFO - Renamed columns: {'review_text': 'review'}
+2025-11-27 10:18:44,481 - INFO - Removed 0 duplicate rows.
+2025-11-27 10:18:44,524 - INFO - Removed 0 rows with missing critical data.
+2025-11-27 10:18:44,605 - INFO - Date column successfully normalized to YYYY-MM-DD format.
+2025-11-27 10:18:44,607 - INFO - Initial cleaning complete. Total reviews remaining: 9888
+2025-11-27 10:22:39,301 - INFO - Language Filtering: Kept 5783 English reviews (Dropped 4105 non-English/undetectable reviews).
+2025-11-27 10:22:39,305 - INFO - Applying review count constraints (Min: 400, Max: 700) per bank...
+2025-11-27 10:22:39,314 - INFO - Bank BOA: 730 reviews found. Sampling down to 700 reviews.
+2025-11-27 10:22:39,319 - INFO - Bank CBE: 4569 reviews found. Sampling down to 700 reviews.
+2025-11-27 10:22:39,327 - INFO - Bank Dashen: 484 reviews found. Constraint met. Keeping all.
+2025-11-27 10:22:39,394 - INFO - 💾 Saved 1884 final constrained reviews to c:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\processed\final_bank_reviews_constrained.csv
