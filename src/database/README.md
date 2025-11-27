@@ -133,3 +133,4 @@ ORDER BY
 ✔️ Confirms **average sentiment score**
 
 ---
+![alt text](image.png)
