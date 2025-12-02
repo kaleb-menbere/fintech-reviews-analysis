@@ -1,22 +1,24 @@
-# 🚀 Fintech Customer Experience Analysis
+# 🚀 **Fintech Customer Experience Analysis**
 
-### *A Data-Driven Review of Ethiopian Banking Apps for Omega Consultancy*
+### *A Data-Driven Review of Ethiopian Mobile Banking Apps*
 
-This project delivers a full analytical pipeline for evaluating customer experiences across major Ethiopian mobile banking applications. Using NLP, sentiment analysis, thematic classification, and relational data storage, it generates actionable insights to guide digital banking strategy and feature development.
+**Prepared for Omega Consultancy**
 
----
-
-# 🏦 Banks Included in the Study
-
-| Bank                                  | App Name                 | Review Volume |
-| ------------------------------------- | ------------------------ | ------------- |
-| Commercial Bank of Ethiopia (CBE) | CBE Mobile Banking       | 📈 High       |
-| Bank of Abyssinia (BOA)           | Bank of Abyssinia Mobile | ⏳ Medium      |
-| Dashen Bank                       | Dashen Mobile Banking    | 📊 Low        |
+This project provides an end-to-end analytical pipeline for evaluating customer sentiment, themes, and pain points from Google Play Store reviews of major Ethiopian banking applications. Using NLP, PostgreSQL, and automated reporting, it produces insights that support digital banking strategy, product improvement, and user experience optimization.
 
 ---
 
-# ⚡ Quick Start
+# 🏦 **Banks Included**
+
+| Bank                                  | Mobile App            | Review Volume |
+| ------------------------------------- | --------------------- | ------------- |
+| **Commercial Bank of Ethiopia (CBE)** | CBE Mobile Banking    | 📈 High       |
+| **Bank of Abyssinia (BOA)**           | BOA Mobile Banking    | ⏳ Medium      |
+| **Dashen Bank**                       | Dashen Mobile Banking | 📉 Lower      |
+
+---
+
+# ⚡ **Quick Start**
 
 ## 🔧 Installation
 
@@ -31,125 +33,154 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Running the Full Analysis Pipeline (All 4 Tasks)
+# ▶️ **How to Run the Full Pipeline**
 
-Run each script from the project root in the order below.
+All steps are detailed in **How-to-Run.md**, but here is the quick execution order:
 
-| Step                             | Script Path                              | Output                                                 | Status        |
-| -------------------------------- | ---------------------------------------- | ------------------------------------------------------ | ------------- |
-| Task 1 — Data Collection     | `src/data_collection/scrape_reviews.py`  | `data/raw/reviews_initial_clean.csv`                   | ✅ Complete    |
-| Task 1 — Preprocessing       | `src/data_processing/preprocess_data.py` | `data/processed/final_bank_reviews_constrained.csv`    | ✅ Complete    |
-| Task 2 — NLP Analysis        | `src/analysis/nlp_pipeline.py`           | `data/processed/reviews_with_sentiment_themes.csv`     | ✅ Complete    |
-| Task 3 — Database Load       | `src/database/db_load_data.py`           | PostgreSQL: `bank_reviews`                             | ✅ Complete    |
-| Task 4 — Reporting & Visuals | `src/analysis_and_reporting.py`          | Rating chart, sentiment trend, keyword cloud, insights | 🏁 Final Step |
-
----
-
-# 🎯 Business Objectives — Successfully Achieved
-
-This analysis enables Omega Consultancy and banking partners to:
-
-✔ Identify the strongest customer satisfaction drivers
-✔ Detect major pain points affecting transactions & app usage
-✔ Compare banking app performance using balanced sentiment data
-✔ Generate actionable product improvement recommendations
-✔ Support feature roadmapping & user retention strategies
+| Step                          | Script                                      | Output                                              |
+| ----------------------------- | ------------------------------------------- | --------------------------------------------------- |
+| **Task 1 — Data Collection**  | `src/data_collection/scrape_reviews.py`     | `data/raw/reviews_initial_clean.csv`                |
+| **Task 1 — Preprocessing**    | `src/data_preprocessing/preprocess_data.py` | `data/processed/final_bank_reviews_constrained.csv` |
+| **Task 2 — NLP Analysis**     | `src/analysis/...` *(depending on version)* | `data/processed/reviews_with_sentiment_themes.csv`  |
+| **Task 3 — Database Storage** | `src/database/task_3_database_storage.py`   | PostgreSQL: *bank_reviews* DB                       |
+| **Task 4 — Final Reporting**  | `src/analysis/task_4_analysis.py`           | Visuals + insights → `reports/task_4_output/`       |
 
 ---
 
-# 🔬 Analysis Methodology
+# 🎯 **Business Goals — Achieved**
 
-## Task 1 — Data Collection & Preprocessing
+This pipeline helps Omega Consultancy and partner banks to:
 
-* Scraped 9,800+ Google Play reviews using *google-play-scraper*.
-* Built a balanced dataset: 700 reviews per bank (total 2,100).
-* Cleaned, deduplicated, standardized, and normalized text.
-
-📁 Output:
-`data/processed/final_bank_reviews_constrained.csv`
+✔ Identify top customer frustrations and positive drivers
+✔ Compare app performance through structured sentiment metrics
+✔ Discover patterns across reliability, UX, and transaction flow
+✔ Support data-driven feature development
+✔ Improve digital banking retention and app satisfaction
 
 ---
 
-## Task 2 — Sentiment & Thematic Analysis
+# 🔬 **Methodology Overview**
 
-### 📘 Sentiment Analysis
+## **Task 1 — Data Collection & Preprocessing**
 
-* Model used: `distilbert-base-uncased-finetuned-sst-2-english`
-* Produced:
+* Scraped **9,800+ reviews** using *google-play-scraper*
+* Cleaned and normalized text
+* Balanced dataset: **700 reviews per bank**
+* Output:
+  `data/processed/final_bank_reviews_constrained.csv`
 
-  * Sentiment label (Positive / Neutral / Negative)
-  * Sentiment polarity score
-  * Emoji reaction (visual sentiment indicator)
+---
 
-### 🏷️ Thematic Clustering
+## **Task 2 — NLP: Sentiment & Thematic Analysis**
 
-Reviews are categorized into 5 customer experience themes:
+### 🔥 Sentiment Analysis
+
+Model used:
+`distilbert-base-uncased-finetuned-sst-2-english`
+
+Produces:
+
+* Sentiment Label → Positive / Neutral / Negative
+* Sentiment Score → -1.0 to +1.0
+* Emoji Reaction → 😡 😐 😃 (included in dataset)
+
+### 🏷️ Thematic Classification
+
+5 major customer themes:
 
 1. Account Access Issues
 2. Transaction Performance
-3. Reliability & Bugs
-4. User Interface & UX
+3. Reliability & Bug Reports
+4. UI & User Experience
 5. Customer Support
 
-📁 Output:
+Output:
 `data/processed/reviews_with_sentiment_themes.csv`
 
 ---
 
-## Task 3 — PostgreSQL Database Storage
+## **Task 3 — PostgreSQL Database Storage**
 
-* Database: bank_reviews
-* Tables:
+Database Name: **bank_reviews**
+Tables:
 
-  * `banks` (parent)
-  * `reviews` (child, FK to bank_id)
-* All enriched reviews (sentiment + themes) stored relationally for scalable querying.
+* `banks` — list of banks
+* `reviews` — all enriched review records (FK → bank_id)
 
----
-
-## Task 4 — Final Analysis & Reporting
-
-The final script connects to the PostgreSQL database and produces visual assets + insights.
-
-### Generated Assets
-
-| Artifact                  | Purpose                          | File Path                               |
-| ------------------------- | -------------------------------- | --------------------------------------- |
-| ⭐ Rating Distribution | Compare 1–5 star ratings         | `reports/rating_distribution.png`       |
-| 📉 Sentiment Trend    | Time-series of monthly sentiment | `reports/sentiment_trend.png`           |
-| ☁️ Pain Point Cloud   | Most frequent negative keywords  | `reports/keyword_cloud_pain_points.png` |
-| 📄 Raw Insights       | Key metrics + recommendations    | `reports/raw_insights.txt`              |
+All cleaned review data is persisted for scalable reporting and analytics.
 
 ---
 
-# ⭐ Initial Rating Breakdown Summary
+## **Task 4 — Reporting & Visualization**
 
-| Bank       | 1-Star (Highly Negative) | 5-Star (Highly Positive) |
-| ---------- | ------------------------ | ------------------------ |
-| BOA    | 282                      | 307                      |
-| CBE    | 120                      | 451                      |
-| Dashen | 94                       | 511                      |
+Running Task 4 generates 4 key deliverables stored in:
+
+📁 `reports/task_4_output/`
+
+| File                            | Description                                 |
+| ------------------------------- | ------------------------------------------- |
+| `rating_distribution.png`       | Comparison of 1–5 star ratings across banks |
+| `sentiment_trend.png`           | Monthly sentiment trend                     |
+| `keyword_cloud_pain_points.png` | Negative feedback keyword cloud             |
+| `raw_insights.txt`              | Summary of insights + metrics               |
 
 ---
 
-# 📂 Project Structure
+# ⭐ **Initial Rating Summary**
+
+| Bank       | 1-Star (Negative) | 5-Star (Positive) |
+| ---------- | ----------------- | ----------------- |
+| **BOA**    | 282               | 307               |
+| **CBE**    | 120               | 451               |
+| **Dashen** | 94                | 511               |
+
+---
+
+# 📂 **Project Structure**
 
 ```
 fintech-reviews-analysis/
-├── data/
-│   ├── raw/                       # Initial scraped data
-│   └── processed/                 # Cleaned & NLP-enriched data
-├── db_schema/
-│   ├── bank_reviews_schema.sql    # Database creation script
-│   └── verification_queries.sql   # Integrity checks
-├── src/
-│   ├── data_collection/
-│   ├── data_processing/
-│   ├── analysis/
-│   ├── database/
-│   └── analysis_and_reporting.py  # Final analytics script
-├── reports/                       # Final visualizations & insight files
-├── tests/
-└── requirements.txt
+├─ How-to-Run.md
+├─ README.md
+├─ requirements.txt
+├─ scraping.log
+├─ config/
+│  └─ db_config.py
+├─ data/
+│  ├─ raw/
+│  │  └─ reviews_initial_clean.csv
+│  └─ processed/
+│     ├─ aggregated_bank_insights.csv
+│     ├─ final_bank_reviews_constrained.csv
+│     └─ reviews_with_sentiment_themes.csv
+├─ notebooks/
+│  ├─ README.md
+│  ├─ processing.log
+│  ├─ scraping.log
+│  ├─ task-1.ipynb
+│  ├─ task-2.ipynb
+│  ├─ task-3.ipynb
+│  └─ task-4.ipynb
+├─ reports/
+│  └─ task_4_output/
+│     ├─ keyword_cloud_pain_points.png
+│     ├─ rating_distribution.png
+│     ├─ raw_insights.txt
+│     └─ sentiment_trend.png
+├─ scripts/
+├─ src/
+│  ├─ analysis/
+│  │  └─ task_4_analysis.py
+│  ├─ data_collection/
+│  │  └─ scrape_reviews.py
+│  ├─ data_preprocessing/
+│  │  └─ preprocess_data.py
+│  └─ database/
+│     ├─ README.md
+│     ├─ image-1.png
+│     ├─ image-2.png
+│     ├─ image.png
+│     └─ task_3_database_storage.py
+└─ tests/
 ```
 
