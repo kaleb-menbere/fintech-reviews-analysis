@@ -35,3 +35,4 @@
 2025-11-27 09:11:17,545 - INFO - Cleaned reviews count: 9888 (Dropped 167 rows).
 2025-11-27 09:11:17,548 - INFO - The 'date' column was successfully excluded from the saved CSV file.
 2025-11-27 09:11:17,606 - INFO - 💾 Saved 9888 cleaned reviews to C:\Users\ADMIN\Desktop\KALEB\10Academy\Week2\fintech-reviews-analysis\data\raw\bank_reviews_clean_20251127_091117.csv
+
