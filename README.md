@@ -8,7 +8,7 @@ This project provides an end-to-end analytical pipeline for evaluating customer 
 
 ---
 
-# 🏦 **Banks Included**
+# 🏦 **Banks Included** 
 
 | Bank                                  | Mobile App            | Review Volume |
 | ------------------------------------- | --------------------- | ------------- |
